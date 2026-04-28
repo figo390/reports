@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>二轮车雨棚品类 · 完整分析报告 + 电商创业全指南</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  font-family: -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif;
+  background: #f5f5f7;
+  color: #1d1d1f;
+  line-height: 1.9;
+  margin: 0;
+  padding: 0;
+}
+.header {
+  background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+  color: #fff;
+  padding: 48px 20px 36px;
+  text-align: center;
+}
+.header h1 { font-size: 1.5em; margin-bottom: 8px; }
+.header .sub { opacity: .7; font-size: .88em; }
+.header .meta { opacity: .5; font-size: .76em; margin-top: 10px; line-height: 1.6; }
+.header .emoji { font-size: 2em; margin-top: 12px; }
+
+.container { max-width: 940px; margin: 0 auto; padding: 22px 16px; }
+
+.section {
+  background: #fff;
+  border-radius: 14px;
+  padding: 26px 30px;
+  margin-bottom: 20px;
+  box-shadow: 0 1px 8px rgba(0,0,0,.06);
+  page-break-inside: avoid;
+}
+.section h2 {
+  font-size: 1.15em;
+  color: #302b63;
+  margin: 0 0 14px;
+  padding-bottom: 8px;
+  border-bottom: 2px solid #e8e0ff;
+}
+.section h3 {
+  font-size: .98em;
+  color: #444;
+  margin: 18px 0 10px;
+}
+
+table { width: 100%; border-collapse: collapse; font-size: .84em; margin: 10px 0; }
+th { background: #f0f4ff; color: #302b63; font-weight: 600; padding: 8px 10px; text-align: left; border-bottom: 2px solid #d0d8f0; }
+td { padding: 7px 10px; border-bottom: 1px solid #eee; }
+tr:hover td { background: #fafbff; }
+
+.platform-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin: 12px 0; }
+@media (max-width: 600px) { .platform-grid { grid-template-columns: 1fr; } }
+.pc { border-radius: 10px; padding: 16px; color: #fff; }
+.pc .name { font-weight: 700; font-size: 1em; margin-bottom: 4px; }
+.pc .inf { font-size: .82em; opacity: .9; line-height: 1.6; }
+.pc .tag { display: inline-block; font-size: .72em; padding: 2px 8px; border-radius: 10px; background: rgba(255,255,255,.2); margin-top: 6px; }
+.pc-tb { background: linear-gradient(135deg, #e74c3c, #c0392b); }
+.pc-jd { background: linear-gradient(135deg, #e84393, #b33951); }
+.pc-pd { background: linear-gradient(135deg, #6c5ce7, #4834d4); }
+.pc-dy { background: linear-gradient(135deg, #00b894, #0984e3); }
+
+.pill { display: inline-block; font-size: .76em; padding: 2px 10px; border-radius: 12px; margin: 2px 3px; }
+.pill-red { background: #ffe0e0; color: #c0392b; }
+.pill-blue { background: #e0f0ff; color: #0984e3; }
+.pill-green { background: #e0f8e8; color: #00b894; }
+.pill-purple { background: #eee8ff; color: #6c5ce7; }
+
+.hl { color: #e74c3c; font-weight: 600; }
+.hl-blue { color: #0984e3; font-weight: 600; }
+.highlight-box {
+  background: #f8f7ff;
+  border-left: 4px solid #6c5ce7;
+  border-radius: 0 8px 8px 0;
+  padding: 12px 16px;
+  margin: 10px 0;
+  font-size: .86em;
+}
+.highlight-box strong { color: #302b63; }
+
+.step-card {
+  background: #faf9ff;
+  border: 1px solid #e0d8f0;
+  border-radius: 10px;
+  padding: 14px 16px;
+  margin: 8px 0;
+}
+.step-card .num {
+  display: inline-block; width: 24px; height: 24px;
+  background: #6c5ce7; color: #fff;
+  border-radius: 50%; text-align: center;
+  line-height: 24px; font-size: .78em; font-weight: 700;
+  margin-right: 6px;
+}
+.step-card .title { font-weight: 600; color: #302b63; font-size: .88em; }
+.step-card .detail { font-size: .83em; color: #555; margin-top: 5px; line-height: 1.7; }
+
+.prod-link { color: #0984e3; text-decoration: none; font-size: .78em; }
+.prod-link:hover { text-decoration: underline; }
+
+.price-range-flow {
+  display: flex; align-items: center; gap: 0;
+  overflow-x: auto; padding: 8px 0; font-size: .82em;
+}
+.price-range-flow .node {
+  flex-shrink: 0; padding: 6px 12px;
+  border-radius: 6px; background: #f0f4ff;
+  color: #302b63; font-weight: 600; text-align: center;
+}
+.price-range-flow .arrow { flex-shrink: 0; color: #ccc; padding: 0 4px; }
+.price-range-flow .desc { flex-shrink: 0; padding: 6px 10px; font-size: .8em; color: #666; }
+
+.brand-row { display: flex; flex-wrap: wrap; gap: 6px; margin: 8px 0; }
+.brand-row .b { background: #fff; border: 1px solid #e0d8f0; border-radius: 6px; padding: 5px 12px; font-size: .82em; }
+
+.stat-row { display: flex; gap: 10px; flex-wrap: wrap; margin: 10px 0; }
+.stat-row .sb { flex: 1; min-width: 80px; background: #f8f7ff; border-radius: 8px; padding: 12px; text-align: center; }
+.stat-row .sb .num { font-size: 1.2em; font-weight: 700; color: #302b63; }
+.stat-row .sb .lbl { font-size: .74em; color: #888; margin-top: 2px; }
+
+pre { background: #f8f8fa; border-radius: 6px; padding: 10px 14px; font-size: .8em; overflow-x: auto; line-height: 1.5; }
+.footer { text-align: center; padding: 30px 0; color: #999; font-size: .76em; }
+
+@media print {
+  body { background: #fff; }
+  .section { box-shadow: none; border: 1px solid #eee; break-inside: avoid; }
+  .header { padding: 30px 20px; }
+}
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>二轮车雨棚（含遮阳伞）品类 · 完整分析报告 + 电商创业全指南</h1>
+  <div class="sub">数据样本：淘宝130款 / 京东120款 / 拼多多50款 / 抖音22条 = 总计约320+样本</div>
+  <div class="meta">采集日期：2026-04-28 ｜ 方式：浏览器自动化+登录抓取(京东/拼多多/抖音) ｜ 平台：淘宝/京东/拼多多/抖音 ｜ 生成：小虾米 🦐</div>
+  <div class="emoji">🦐</div>
+</div>
+
+<div class="container">
+
+<!-- 1. 平台概况 -->
+<div class="section">
+  <h2>📊 一、四平台数据速览</h2>
+  <div class="platform-grid">
+    <div class="pc pc-tb"><div class="name">🛒 淘宝/天猫</div><div class="inf">130+ 款样本<br>价格带 ¥27–¥290<br>核心 ¥40-80（占40%）<br>品牌旗舰店+淘工厂<br>约4000+在线商品</div></div>
+    <div class="pc pc-jd"><div class="name">📦 京东</div><div class="inf">120+ 款样本<br>价格带 ¥13.8–¥151<br>核心 ¥32-59<br>品牌+京喜自营<br>505个商品</div></div>
+    <div class="pc pc-pd"><div class="name">🎯 拼多多</div><div class="inf">50+ 款样本<br>价格带 ¥5.99–¥198<br>核心 ¥48-79<br>白牌+工厂直销</div></div>
+    <div class="pc pc-dy"><div class="name">🎬 抖音</div><div class="inf">22 条视频<br>直播价偏低<br>内容驱动型<br>达人种草+直播带货</div></div>
+  </div>
+</div>
+
+<!-- 2. 各价格带爆款 -->
+<div class="section">
+  <h2>🏆 二、各平台价格带 × 爆款单品（含链路）</h2>
+
+  <h3>🛒 淘宝/天猫</h3>
+  <table>
+    <tr><th>价格带</th><th>爆款名称</th><th>价格</th><th>销量</th><th>店铺</th><th>链接</th></tr>
+    <tr><td>¥20-40</td><td>电动电瓶车雨伞加厚可拆防晒</td><td>¥37.9</td><td>9000+付款</td><td>易联三得旗舰店</td><td><a class="prod-link" href="https://s.taobao.com/search?q=%E7%94%B5%E5%8A%A8%E8%BD%A6%E9%9B%A8%E6%A3%9A+%E6%98%93%E8%81%94%E4%B8%89%E5%BE%97" target="_blank">🔗 搜同款</a></td></tr>
+    <tr><td>¥40-60</td><td>浪漫美西挡雨棚好评榜TOP1</td><td>¥54.9</td><td>9万+付款</td><td>浪漫美西旗舰店</td><td><a class="prod-link" href="https://s.taobao.com/search?q=%E6%B5%AA%E6%BC%AB%E7%BE%8E%E8%A5%BF+%E7%94%B5%E5%8A%A8%E8%BD%A6%E9%9B%A8%E6%A3%9A" target="_blank">🔗 搜同款</a></td></tr>
+    <tr><td>¥60-80</td><td>淘工厂折叠伸缩雨棚（热销TOP1）</td><td>¥68</td><td>1万+付款</td><td>天天特卖工厂</td><td><a class="prod-link" href="https://s.taobao.com/search?q=%E6%B7%98%E5%B7%A5%E5%8E%82+%E7%94%B5%E5%8A%A8%E8%BD%A6%E9%9B%A8%E6%A3%9A+%E6%8A%98%E5%8F%A0" target="_blank">🔗 搜同款</a></td></tr>
+    <tr><td>¥80-100</td><td>折叠伸缩式加厚遮阳伞（热销TOP7）</td><td>¥95</td><td>7000+付款</td><td>易联三得旗舰店</td><td><a class="prod-link" href="https://s.taobao.com/search?q=%E7%94%B5%E5%8A%A8%E8%BD%A6%E9%9B%A8%E6%A3%9A+%E6%8A%98%E5%8F%A0%E4%BC%B8%E7%BC%A9+%E5%8A%A0%E5%8E%9A" target="_blank">🔗 搜同款</a></td></tr>
+    <tr><td>¥100-130</td><td>电动摩托车快拆全折叠遮阳暴雨款</td><td>¥123.3</td><td>1万+付款</td><td>冠齐旗舰店</td><td><a class="prod-link" href="https://s.taobao.com/search?q=%E5%85%A8%E6%8A%98%E5%8F%A0+%E9%81%AE%E9%98%B3%E6%9A%B4%E9%9B%A8+%E7%94%B5%E5%8A%A8%E8%BD%A6" target="_blank">🔗 搜同款</a></td></tr>
+    <tr><td>¥130-290</td><td>全封闭不锈钢支架雨蓬</td><td>¥286.5</td><td>200+付款</td><td>安鑫车棚</td><td><a class="prod-link" href="https://s.taobao.com/search?q=%E5%85%A8%E5%B0%81%E9%97%AD+%E4%B8%8D%E9%94%88%E9%92%A2+%E7%94%B5%E5%8A%A8%E8%BD%A6%E9%9B%A8%E8%93%AC" target="_blank">🔗 搜同款</a></td></tr>
+  </table>
+
+  <h3>📦 京东</h3>
+  <table>
+    <tr><th>价格带</th><th>爆款名称</th><th>价格</th><th>评价</th><th>店铺</th><th>直达链接</th></tr>
+    <tr><td>¥30-35</td><td>朝安遮雨棚D款经典款</td><td>¥32.9</td><td>2000+评价</td><td>朝安官方旗舰店</td><td><a class="prod-link" href="https://item.jd.com/10148582414624.html" target="_blank">🔗 打开京东</a></td></tr>
+    <tr><td>¥35-50</td><td>麓格立电动车防雨棚</td><td>¥47</td><td>1000+评价</td><td>麓觅车品专营店</td><td><a class="prod-link" href="https://item.jd.com/10116501149790.html" target="_blank">🔗 打开京东</a></td></tr>
+    <tr><td>¥50-65</td><td>浪漫美西灰色猫咪大推窗</td><td>¥64.8</td><td>5000+评价</td><td>浪漫美西旗舰店</td><td><a class="prod-link" href="https://item.jd.com/10137112663457.html" target="_blank">🔗 打开京东</a></td></tr>
+    <tr><td>¥65-85</td><td>锋淇星电动车雨棚蓬</td><td>¥59.9</td><td>2100+种草</td><td>锋淇星旗舰店</td><td><a class="prod-link" href="https://item.jd.com/10205861764203.html" target="_blank">🔗 打开京东</a></td></tr>
+    <tr><td>¥85-110</td><td>京喜自营电动车雨伞快拆</td><td>¥89</td><td>京东自营</td><td>京喜自营</td><td><a class="prod-link" href="https://item.jd.com/10218542338714.html" target="_blank">🔗 打开京东</a></td></tr>
+    <tr><td>¥110-151</td><td>京东物流全折叠7字篷</td><td>¥151</td><td>京东自营</td><td>京喜自营</td><td><a class="prod-link" href="https://item.jd.com/10210361544103.html" target="_blank">🔗 打开京东</a></td></tr>
+  </table>
+
+  <h3>🎯 拼多多</h3>
+  <table>
+    <tr><th>价格带</th><th>爆款名称</th><th>价格</th><th>已拼</th><th>特征</th><th>链接</th></tr>
+    <tr><td>¥5-16</td><td>电动车雨棚基础型引流款</td><td>¥5.99</td><td>1.6万+</td><td>基础型</td><td><a class="prod-link" href="https://mobile.yangkeduo.com/search_result.html?search_key=%E7%94%B5%E5%8A%A8%E8%BD%A6%E9%9B%A8%E6%A3%9A+%E4%BE%BF%E5%AE%9C" target="_blank">🔗 搜同款</a></td></tr>
+    <tr><td>¥24-38</td><td>电动车车棚雨棚可折叠（走量王）</td><td>¥24.9</td><td>500万+</td><td>折叠/防晒</td><td><a class="prod-link" href="https://mobile.yangkeduo.com/search_result.html?search_key=%E7%94%B5%E5%8A%A8%E8%BD%A6%E9%9B%A8%E6%A3%9A+%E5%8F%AF%E6%8A%98%E5%8F%A0" target="_blank">🔗 搜同款</a></td></tr>
+    <tr><td>¥48-58</td><td>全折叠伸缩电动车遮阳棚</td><td>¥58.8</td><td>6.8万+</td><td>折叠/防晒</td><td><a class="prod-link" href="https://mobile.yangkeduo.com/search_result.html?search_key=%E7%94%B5%E5%8A%A8%E8%BD%A6%E9%81%AE%E9%98%B3%E6%A3%9A+%E5%85%A8%E6%8A%98%E5%8F%A0" target="_blank">🔗 搜同款</a></td></tr>
+    <tr><td>¥73-80</td><td>电动车雨棚防晒加厚款</td><td>¥73.8</td><td>13.5万+</td><td>防晒/拆卸</td><td><a class="prod-link" href="https://mobile.yangkeduo.com/search_result.html?search_key=%E7%94%B5%E5%8A%A8%E8%BD%A6%E9%9B%A8%E6%A3%9A+%E9%98%B2%E6%99%92+%E5%8A%A0%E5%8E%9A" target="_blank">🔗 搜同款</a></td></tr>
+    <tr><td>¥88-99</td><td>二轮踏板加厚全封闭雨棚</td><td>¥99.8</td><td>20.9万+</td><td>加厚/全封闭</td><td><a class="prod-link" href="https://mobile.yangkeduo.com/search_result.html?search_key=%E4%BA%8C%E8%BD%AE%E8%B8%8F%E6%9D%BF+%E5%85%A8%E5%B0%81%E9%97%AD+%E9%9B%A8%E6%A3%9A" target="_blank">🔗 搜同款</a></td></tr>
+    <tr><td>¥127-138</td><td>快拆折叠伸缩雨棚</td><td>¥127.5</td><td>5751件</td><td>折叠/快拆</td><td><a class="prod-link" href="https://mobile.yangkeduo.com/search_result.html?search_key=%E7%94%B5%E5%8A%A8%E8%BD%A6%E9%9B%A8%E6%A3%9A+%E5%BF%AB%E6%8B%86+%E6%8A%98%E5%8F%A0+%E4%BC%B8%E7%BC%A9" target="_blank">🔗 搜同款</a></td></tr>
+    <tr><td>¥167-198</td><td>加厚全封闭外卖骑手专用棚</td><td>¥198</td><td>15.1万+</td><td>加厚全封闭</td><td><a class="prod-link" href="https://mobile.yangkeduo.com/search_result.html?search_key=%E5%A4%96%E5%8D%96%E9%AA%91%E6%89%8B+%E7%94%B5%E5%8A%A8%E8%BD%A6%E9%9B%A8%E6%A3%9A" target="_blank">🔗 搜同款</a></td></tr>
+  </table>
+
+  <h3>🎬 抖音（短视频热度排行）</h3>
+  <table>
+    <tr><th>排名</th><th>视频标题</th><th>创作者</th><th>点赞</th><th>核心卖点</th></tr>
+    <tr><td>🥇</td><td>使用很方便，收回去也很快，确实更不容易被拆！</td><td>—</td><td><span class="hl">2652</span></td><td>合规/不易被拆</td></tr>
+    <tr><td>🥈</td><td>26款全新折叠雨棚</td><td>@冠齐车棚科技</td><td>9423</td><td>新款/折叠</td></tr>
+    <tr><td>🥉</td><td>这个车棚跟传统车棚不一样</td><td>@冠齐运动旗舰店</td><td>1751</td><td>创新/区别传统</td></tr>
+    <tr><td>4</td><td>雨棚免安装！全收缩在盒子里！</td><td>—</td><td>760</td><td>免安装/收纳</td></tr>
+    <tr><td>5</td><td>全折叠收缩雨棚使用教程</td><td>—</td><td>749</td><td>使用教程</td></tr>
+    <tr><td>6</td><td>可快拆折叠雨棚！！防晒防雨又防风</td><td>@青罗</td><td>587</td><td>快拆/防晒</td></tr>
+    <tr><td>7</td><td>直播中：26新款不怕拆的雨棚</td><td>@嘉泊电动车雨棚</td><td>直播中</td><td>直播展示</td></tr>
+  </table>
+  <div class="highlight-box"><strong>抖音关键洞察：</strong>"确实更不容易被拆"（2652赞）是最高赞卖点。"合规合法""交警不查"是抖音核心转化词。建议合作：@冠齐车棚科技、@冠齐运动旗舰店</div>
+</div>
+
+<!-- 3. 全平台价格图谱 -->
+<div class="section">
+  <h2>📊 三、全平台价格图谱</h2>
+  <pre>
+价格 ──────────────────────────────────────────────────
+¥10 ── ¥38 ── ¥54 ── ¥73 ── ¥85 ── ¥138 ── ¥290
+ │      │       │       │       │       │       │
+PDD    PDD     PDD     PDD     PDD     PDD    淘宝
+低价   7万件   17万件  13.5万  5002件  1.6万   高端款
+       PDD     JD/PDD  PDD     JD高配  JD自营
+       淘宝    淘工厂  淘工厂         淘宝
+       基础款  入门款         高配款
+  </pre>
+  <div style="text-align:center;font-size:.8em;color:#888;">▲ 价格从低到高，标注代表平台和最突出销量</div>
+</div>
+
+<!-- 4. 平台定位 + 品牌 + 用户痛点 -->
+<div class="section">
+  <h2>🎯 四、平台定位分析</h2>
+  <table>
+    <tr><th>维度</th><th>淘宝</th><th>京东</th><th>拼多多</th><th>抖音</th></tr>
+    <tr><td>核心卖点</td><td>品类全/品牌多</td><td>京东物流/正品保障</td><td>极致低价/拼单走量</td><td>直播展示/不怕查</td></tr>
+    <tr><td>用户画像</td><td>中青年，性价比+品牌</td><td>品质型，价格不敏感</td><td>价格敏感，下沉市场</td><td>年轻+中年，冲动消费</td></tr>
+    <tr><td>价格中位数</td><td>~¥60</td><td>~¥45</td><td>~¥55</td><td>直播价偏低</td></tr>
+    <tr><td>竞争烈度</td><td><span class="hl">极高</span></td><td>中等</td><td><span class="hl">高</span></td><td>内容驱动</td></tr>
+    <tr><td>适销策略</td><td>品牌化+淘工厂双线</td><td>京东自营入仓</td><td>极致成本+走量</td><td>达人合作+直播</td></tr>
+  </table>
+</div>
+
+<div class="section">
+  <h2>🏷️ 五、品牌跨平台覆盖 & 供应链</h2>
+  <table>
+    <tr><th>品牌</th><th>淘宝</th><th>京东</th><th>拼多多</th><th>抖音</th></tr>
+    <tr><td><strong>浪漫美西</strong></td><td>✅ 旗舰店</td><td>✅ 旗舰店</td><td>✅</td><td>❌</td></tr>
+    <tr><td>kinwin</td><td>✅</td><td>✅ (京喜)</td><td>✅</td><td>❌</td></tr>
+    <tr><td><strong>冠齐</strong></td><td>⚠️ 部分</td><td>✅ 多SKU</td><td>❌</td><td>✅ 旗舰店</td></tr>
+    <tr><td>浪漫西施</td><td>⚠️</td><td>✅ 旗舰店</td><td>❌</td><td>❌</td></tr>
+    <tr><td>朝安</td><td>❌</td><td>✅ 旗舰店</td><td>❌</td><td>❌</td></tr>
+    <tr><td>金狸</td><td>❌</td><td>❌</td><td>✅</td><td>❌</td></tr>
+  </table>
+  <div class="highlight-box"><strong>结论：</strong>浪漫美西是全平台覆盖最全的品牌；冠齐跨京东和抖音布局。</div>
+  <h3>供应链分布</h3>
+  <div class="stat-row">
+    <div class="sb"><div class="num">浙江金华</div><div class="lbl">🥇 第一集群（40%+）</div></div>
+    <div class="sb"><div class="num">湖南</div><div class="lbl">🥈 长沙/常德</div></div>
+    <div class="sb"><div class="num">广东/河南/江西</div><div class="lbl">🥉 次级集群</div></div>
+    <div class="sb"><div class="num">四川</div><div class="lbl">拼多多特色发货地</div></div>
+  </div>
+  <h3>1688 批发价参考</h3>
+  <table>
+    <tr><th>品类</th><th>批发价</th><th>零售价</th><th>价差</th></tr>
+    <tr><td>基础折叠款</td><td>¥27-38</td><td>¥40-80</td><td>~2x</td></tr>
+    <tr><td>中档快拆黑胶款</td><td>¥45-55</td><td>¥79-109</td><td>~2x</td></tr>
+    <tr><td>高配全封闭款</td><td>¥75-87</td><td>¥129-179</td><td>~2-3x</td></tr>
+  </table>
+</div>
+
+<div class="section">
+  <h2>💡 六、用户痛点跨平台对比</h2>
+  <table>
+    <tr><th>痛点</th><th>淘宝表达</th><th>京东表达</th><th>拼多多表达</th><th>抖音表达</th></tr>
+    <tr><td>🚨 怕被查扣</td><td>—</td><td>"交警不查"</td><td>—</td><td><span class="hl">"不怕拆"</span></td></tr>
+    <tr><td>🔧 安装麻烦</td><td>"快拆""折叠"</td><td>"快拆""免安装"</td><td>"可拆卸"</td><td>"免安装"</td></tr>
+    <tr><td>☀️ 防晒不足</td><td><span class="hl">"UPF 50+"</span></td><td>"黑胶防晒"</td><td>"防晒遮阳"</td><td>"遮阳防晒"</td></tr>
+    <tr><td>🌧️ 防雨不够</td><td><span class="hl">"IPX6"</span></td><td>"防雨加厚"</td><td><span class="hl">"防暴雨"</span></td><td>"防雨防风"</td></tr>
+    <tr><td>🤔 选择顾虑</td><td>榜单评价</td><td>"热卖榜TOP1"</td><td>"好评超99%"</td><td>"直播展示"</td></tr>
+  </table>
+</div>
+
+<!-- 7. 核心结论 -->
+<div class="section">
+  <h2>🎯 七、核心结论</h2>
+  <div class="highlight-box">
+    <strong>1.</strong> 拼多多走量最强（单品500万+件），淘宝品牌梯队最完整<br>
+    <strong>2.</strong> 抖音是增量市场，"不怕查"是最高赞卖点<br>
+    <strong>3.</strong> 定价锚点在¥40-80（淘宝主力区间）<br>
+    <strong>4.</strong> 浙江金华是核心供应链产地<br>
+    <strong>5.</strong> <span class="hl">产品爆款公式：快拆免安装 × 黑胶防晒UPF50+ × "交警不查"</span>
+  </div>
+</div>
+
+<!-- 8. 电商创业全指南 -->
+<div class="section">
+  <h2>📋 八、电商商家创业全指南（从0到1实干版）</h2>
+
+  <div class="highlight-box">
+    <strong>核心定位：</strong>以电商卖家身份切入，不做工厂。先拿样→测品→1688比价→源头工厂定制→批量订货。<br>
+    <strong>启动预算：</strong>首期约¥25,000-30,000（样品费+首批进货+开店+拍摄）<br>
+    <strong>回本周期：</strong>预计4-5个月
+  </div>
+
+  <h3>▎阶段一：选品定位（第1-7天）</h3>
+  <div class="step-card">
+    <div class="title"><span class="num">1</span> 确定产品矩阵</div>
+    <div class="detail">
+      <strong>引流款（¥30-40）：</strong> 基础折叠款，用于拉流量<br>
+      <strong>主力款（¥49-89）：</strong> 快拆折叠+黑胶防晒+加宽侧挡 <span class="pill pill-red">⭐核心利润来源</span><br>
+      <strong>利润款（¥99-169）：</strong> 全封闭/不锈钢支架/外卖专用，卖品质和差异化<br>
+      <strong>对标竞品：</strong> 浪漫美西¥54.9款（月销9万+）是你重点研究的对象
+    </div>
+  </div>
+  <div class="step-card">
+    <div class="title"><span class="num">2</span> 差异化策略（从数据提炼）</div>
+    <div class="detail">
+      <span class="pill pill-red">合规化</span> → 描述标注"交警不查""正规合法"<br>
+      <span class="pill pill-blue">快拆免安装</span> → 所有平台最高频卖点<br>
+      <span class="pill pill-green">黑胶防晒UPF50+</span> → 材质差异化<br>
+      <span class="pill pill-purple">防暴雨IPX6</span> → 性能差异化<br>
+      <span class="pill pill-red">动物/招财猫图案</span> → 花纹差异化（猫咪/招财猫热销）
+    </div>
+  </div>
+
+  <h3>▎阶段二：找厂拿样（第7-14天）</h3>
+  <div class="step-card">
+    <div class="title"><span class="num">3</span> 1688搜源+筛选工厂</div>
+    <div class="detail">
+      <strong>搜：</strong>"电动车雨棚 源头工厂" / "金华 雨棚 厂家"<br>
+      <strong>筛：</strong> 超级工厂 > 实力商家 > 源头工厂<br>
+      <strong>优：</strong> 🥇浙江金华（第一产业集群）
+    </div>
+  </div>
+  <div class="step-card">
+    <div class="title"><span class="num">4</span> 联系工厂 + 拿样流程</div>
+    <div class="detail">
+      <strong>询价话术：</strong>"你好，我想做电动车雨棚线上销售，看中你家XX款，能否发样？运费到付。质量OK的话首批订500-1000件。"<br>
+      <strong>同时询3-5家</strong>对比价格、质量、交期。<br>
+      <strong>收到样品实测：</strong>防水测试5分钟→折叠开合50次→防晒效果→支架稳固性→重量<br>
+      <strong>定制谈判：</strong>"样品不错，但我想调XX（加宽/换黑胶/改图案），500件起订什么价？"
+    </div>
+  </div>
+
+  <h3>▎阶段三：平台开店（第7-30天）</h3>
+  <div class="step-card">
+    <div class="title"><span class="num">5</span> 淘宝开店（首选，保证金¥1000）</div>
+    <div class="detail">
+      上3-5个SKU（引流款1+主力款2+利润款1）。<br>
+      <strong>标题公式：</strong><br>
+      「交警不查电动车雨棚快拆免安装黑胶防晒折叠伸缩电瓶车遮阳伞」<br>
+      主图：白底图+实景安装图+防水测试动图（手机可拍）
+    </div>
+  </div>
+  <div class="step-card">
+    <div class="title"><span class="num">6</span> 拼多多上架（0元开店）</div>
+    <div class="detail">
+      上引流款¥39-49和主力款¥59-79，用低价冲销量积累评价。<br>
+      <strong>注意：</strong>PDU用户价格敏感，引流款定价必须有竞争力。
+    </div>
+  </div>
+
+  <h3>▎阶段四：运营推广（第15-90天）</h3>
+  <div class="step-card">
+    <div class="title"><span class="num">7</span> 淘宝直通车</div>
+    <div class="detail">
+      初期每天¥50-100预算。<br>
+      关键词：电动车雨棚、电瓶车遮阳伞、交警不查雨棚、折叠雨棚<br>
+      目标ROI：前期1:2，稳定期1:3+
+    </div>
+  </div>
+  <div class="step-card">
+    <div class="title"><span class="num">8</span> 抖音内容+达人合作</div>
+    <div class="detail">
+      <strong>自做内容：</strong>安装视频/防水测试/折叠演示/合规展示<br>
+      <strong>达人合作：</strong>找1-10万粉丝电动车/骑行类达人，寄样+佣金15-25%。<br>
+      <strong>核心话术：</strong>"正规合法不怕拆""3秒快拆""免安装"
+    </div>
+  </div>
+
+  <h3>▎阶段五：供应链深化（第30-90天）</h3>
+  <div class="step-card">
+    <div class="title"><span class="num">9</span> 从拿样到定制</div>
+    <div class="detail">
+      <strong>第1批500件：</strong>拿工厂现有款式，贴牌/不贴牌都行<br>
+      <strong>第2批1000-2000件：</strong>根据销售数据选爆款，要求工厂微调<br>
+      调整方向：①加宽侧挡 ②黑胶防晒层 ③附赠安装工具包 ④包装印"正规合法交警不查"
+    </div>
+  </div>
+  <div class="step-card">
+    <div class="title"><span class="num">10</span> 利润模型 & 回本测算</div>
+    <div class="detail">
+      <strong>主力款卖¥79→成本拆解：</strong>
+      <table>
+        <tr><th>项目</th><th>金额</th></tr>
+        <tr><td>1688进货</td><td>-¥50</td></tr>
+        <tr><td>包装辅料</td><td>-¥2</td></tr>
+        <tr><td>快递（金华发全国）</td><td>-¥5</td></tr>
+        <tr><td>平台佣金5%</td><td>-¥4</td></tr>
+        <tr><td>推广费分摊</td><td>-¥6</td></tr>
+        <tr><td><strong>单件净利</strong></td><td><span class="hl">¥12</span></td></tr>
+      </table>
+      <strong>月销500件：</strong>收入¥39,500 → 净利约¥6,000-7,000/月<br>
+      <strong>总投入：</strong>¥27,500（进货¥25,000+开店¥1,000+样品¥500+拍摄¥1,000）<br>
+      <strong>回本：</strong>4-5个月
+    </div>
+  </div>
+
+  <h3>▎十大避坑 & 一键启动清单</h3>
+  <table>
+    <tr><th>#</th><th>坑</th><th>方法</th></tr>
+    <tr><td>1</td><td>囤货过多</td><td>首批不超500件</td></tr>
+    <tr><td>2</td><td>价格战</td><td>不打¥20以下</td></tr>
+    <tr><td>3</td><td>忽略合规</td><td>标"交警不查"</td></tr>
+    <tr><td>4</td><td>质量问题</td><td>打样实测防水/折叠</td></tr>
+    <tr><td>5</td><td>同质化</td><td>差异化主图/图案</td></tr>
+    <tr><td>6</td><td>选错工厂</td><td>看回头率/纠纷率</td></tr>
+    <tr><td>7</td><td>运费高</td><td>金华首重¥3-5</td></tr>
+    <tr><td>8</td><td>淡季</td><td>雨季前囤货</td></tr>
+    <tr><td>9</td><td>PDD比价</td><td>分型号/颜色区分</td></tr>
+    <tr><td>10</td><td>忽视抖音</td><td>"不怕拆"优先布局</td></tr>
+  </table>
+
+  <table style="margin-top:14px;">
+    <tr><th>☐</th><th>事项</th><th>期限</th><th>预算</th></tr>
+    <tr><td>☐</td><td>1688找金华供应商</td><td>3天</td><td>—</td></tr>
+    <tr><td>☐</td><td>联系3-5家工厂要样品</td><td>5天</td><td>¥300-500</td></tr>
+    <tr><td>☐</td><td>实测样品（防水/防晒/折叠）</td><td>收到后</td><td>—</td></tr>
+    <tr><td>☐</td><td>手机拍摄产品图+视频</td><td>选品后</td><td>¥0</td></tr>
+    <tr><td>☐</td><td>淘宝开店（保证金¥1000）</td><td>3天</td><td>¥1,000</td></tr>
+    <tr><td>☐</td><td>拼多多开店（0元）</td><td>1天</td><td>¥0</td></tr>
+    <tr><td>☐</td><td>上架商品+优化标题</td><td>1天</td><td>—</td></tr>
+    <tr><td>☐</td><td>首批进货500件</td><td>选品后</td><td>¥25,000</td></tr>
+    <tr><td>☐</td><td>开直通车测款</td><td>上架后</td><td>¥50-100/天</td></tr>
+    <tr><td>☐</td><td>抖音发安装/防水视频</td><td>持续</td><td>¥0</td></tr>
+    <tr><td>☐</td><td>找抖音达人寄样</td><td>第2月</td><td>样品+佣金</td></tr>
+    <tr><td>☐</td><td>二次定制500-1000件</td><td>第3月</td><td>¥25,000-50,000</td></tr>
+  </table>
+
+  <div class="highlight-box" style="font-size:.95em;">
+    <strong>⭐ 一句话总结：</strong>拿金华样品→实测→淘宝开店卖主力款¥79→抖音做"不怕查"内容→跑通后定制差异化产品。3个月跑通闭环，4-5个月回本。
+  </div>
+</div>
+
+<!-- 9. 数据局限 -->
+<div class="section">
+  <h2>⚠️ 九、数据局限</h2>
+  <table>
+    <tr><th>维度</th><th>说明</th></tr>
+    <tr><td>月销量</td><td>展示累计销量/评价数，非精确月销</td></tr>
+    <tr><td>产品图片</td><td>部分商品图引自平台，可直接从链接进入查看</td></tr>
+    <tr><td>利润率</td><td>1688批发价为公开报价，实际可谈判</td></tr>
+    <tr><td>季节性</td><td>单日数据快照，未覆盖季度波动</td></tr>
+  </table>
+  <div class="highlight-box">拿到实际样品报价后发我，可以算精确利润模型和定价策略。</div>
+</div>
+
+<div class="footer">
+  <p>🦐 小虾米 · 数据驱动决策 · 2026-04-28</p>
+  <p style="margin-top:4px;">数据来源：淘宝130+ / 京东120+ / 拼多多50+ / 抖音22条 · 浏览器自动化+登录抓取</p>
+  <p style="margin-top:2px;">在线查看：https://figo390.github.io/reports/</p>
+</div>
+
+</div>
+</body>
+</html>
